@@ -2,6 +2,13 @@
 #include <iostream>
 #include <string>
 
+/**
+ * Prints out all of the items in the to-do list file
+ * @param file - a reference to a file stream for the to-do list file
+ * @param show_nums - a boolean on to show number indicators for the output
+ *
+ * @return - None
+ */
 void list_items(std::fstream& file, bool show_nums) {
   int num = 1;
   if (file.is_open()) {
@@ -60,7 +67,6 @@ int main() {
 
         case 'Q':
         case 'q':
-          std::cout << "q - quit TODO CLI" << std::endl;
           return 0;
 
         default:

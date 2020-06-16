@@ -2,14 +2,29 @@
 #include <iostream>
 #include <string>
 
-void list_items(std::fstream & file, bool show_nums){
+void list_items(std::fstream& file, bool show_nums) {
+  
+  int num = 1; 
+  if (file.is_open()) {
+    std::string line;
 
+    while (std::getline(file, line)) {
+      if (show_nums) {
+        std::cout << num << " " << line << std::endl; 
+      } else {
+        std::cout << line << std::endl;
+      }
+      num++; 
+    }
+  } else {
+    std::cout << "File Not Found" << std::endl;
+  }
 }
 
 int main() {
   std::cout << "Welcome to TODO CLI" << std::endl;
   std::cout << "Your command line to-do list :)" << std::endl;
-  std::fstream file = open("todo.md"); 
+  std::fstream file("todo.md");
 
   while (true) {
     std::cout << ">> ";
@@ -21,7 +36,7 @@ int main() {
       switch (input[0]) {
         case 'L':
         case 'l':
-          std::cout << "l - list items in list" << std::endl;
+          list_items(file, false);
           break;
 
         case 'A':
@@ -61,5 +76,6 @@ int main() {
     input.clear();
   }
 
+  file.close();
   return 0;
 }

@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <string>
 
 /**
  * Keybindings
@@ -19,42 +20,53 @@ int main() {
   std::cout << "Welcome to TODO CLI" << std::endl;
   std::cout << "Your command line to-do list :)" << std::endl;
 
+  // std::string input;
+  // while (std::getline(std::cin, input)) {
+  //   if (input.empty()) {
+  //     std::cout << "type something boi" << std::endl;
+  //   }
+  // }
+
   while (true) {
-    char input;
-    std::cin >> input;
+    std::string input;
+    std::getline(std::cin, input);
 
-    switch (input) {
-      case 'l':
-        std::cout << "l - list items in list" << std::endl;
-        break;
+    if (!input.empty()) {
+      switch (input[0]) {
+        case 'l':
+          std::cout << "l - list items in list" << std::endl;
+          break;
 
-      case 'a':
-        std::cout << "a - add new item to the list" << std::endl;
-        break;
+        case 'a':
+          std::cout << "a - add new item to the list" << std::endl;
+          break;
 
-      case 'c':
-        std::cout << "c - complete/check off item in the list" << std::endl;
-        break;
+        case 'c':
+          std::cout << "c - complete/check off item in the list" << std::endl;
+          break;
 
-      case 'd':
-        std::cout << "d - delete item in the list" << std::endl;
-        break;
+        case 'd':
+          std::cout << "d - delete item in the list" << std::endl;
+          break;
 
-      case 'h':
-        std::cout << "h - help (print the keybindings)" << std::endl;
-        break;
+        case 'h':
+          std::cout << "h - help (print the keybindings)" << std::endl;
+          break;
 
-      case 'q':
-        std::cout << "q - quit TODO CLI" << std::endl;
-        return 0;
+        case 'q':
+          std::cout << "q - quit TODO CLI" << std::endl;
+          return 0;
 
-      default:
-        std::cout << "Try again. You can type 'h' for help" << std::endl;
-        break;
+        default:
+          std::cout << "Try again. You can type 'h' for help" << std::endl;
+          break;
+      }
+
+    } else {
+      std::cout << "Try again. You typed in nothong" << std::endl;
     }
 
-    std::cin.clear();
-    std::cin.ignore(INT_MAX, '\n');
+    input.clear();
   }
 
   return 0;

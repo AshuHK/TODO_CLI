@@ -31,10 +31,27 @@ void list_items(bool show_nums) {
 }
 
 /**
- * Adds a new item onto the to-do list file
- * @param file - a reference to a file stream for the to-do list file
+ * Appends a new item to the end of the to-do list file 
+ * @param None
+ *
+ * @return - None
  */
-void add_item() {}
+void add_item() {
+  std::ofstream file("todo.md", std::ios::app);
+
+  if (file.is_open()) {
+    std::cout << "mknew: ";
+
+    std::string new_item;
+    std::getline(std::cin, new_item);
+
+    file << "- [ ] " << new_item << "\n";
+  } else {
+    std::cout << "File Not Found" << std::endl; 
+  }
+
+  file.close(); 
+}
 
 int main() {
   std::cout << "Welcome to TODO CLI" << std::endl;

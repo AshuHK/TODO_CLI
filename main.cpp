@@ -9,7 +9,7 @@
  * @return - None
  */
 void list_items(bool show_nums) {
-  std::fstream file("todo.md");
+  std::ifstream file("todo.md");
   int num = 1;
 
   if (file.is_open()) {

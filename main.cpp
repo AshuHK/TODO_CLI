@@ -4,13 +4,14 @@
 
 /**
  * Prints out all of the items in the to-do list file
- * @param file - a reference to a file stream for the to-do list file
  * @param show_nums - a boolean on to show number indicators for the output
  *
  * @return - None
  */
-void list_items(std::fstream& file, bool show_nums) {
+void list_items(bool show_nums) {
+  std::fstream file("todo.md");
   int num = 1;
+
   if (file.is_open()) {
     std::string line;
 
@@ -25,12 +26,19 @@ void list_items(std::fstream& file, bool show_nums) {
   } else {
     std::cout << "File Not Found" << std::endl;
   }
+
+  file.close();
 }
+
+/**
+ * Adds a new item onto the to-do list file
+ * @param file - a reference to a file stream for the to-do list file
+ */
+void add_item() {}
 
 int main() {
   std::cout << "Welcome to TODO CLI" << std::endl;
   std::cout << "Your command line to-do list :)" << std::endl;
-  std::fstream file("todo.md");
 
   while (true) {
     std::cout << ">> ";
@@ -42,12 +50,12 @@ int main() {
       switch (input[0]) {
         case 'L':
         case 'l':
-          list_items(file, false);
+          list_items(false);
           break;
 
         case 'A':
         case 'a':
-          std::cout << "a - add new item to the list" << std::endl;
+          add_item();
           break;
 
         case 'C':
@@ -81,6 +89,5 @@ int main() {
     input.clear();
   }
 
-  file.close();
   return 0;
 }

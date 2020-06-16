@@ -40,7 +40,7 @@ void add_item() {
   std::ofstream file("todo.md", std::ios::app);
 
   if (file.is_open()) {
-    std::cout << "mknew: ";
+    std::cout << "New task: ";
 
     std::string new_item;
     std::getline(std::cin, new_item);
@@ -55,7 +55,7 @@ void add_item() {
 
 int main() {
   std::cout << "Welcome to TODO CLI" << std::endl;
-  std::cout << "Your command line to-do list :)" << std::endl;
+  std::cout << "Your personal command line to-do list :)" << std::endl;
 
   while (true) {
     std::cout << ">> ";

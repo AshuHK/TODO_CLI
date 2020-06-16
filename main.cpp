@@ -28,33 +28,33 @@ int main() {
         std::cout << "l - list items in list" << std::endl;
         break;
 
-      case 'a': 
-        std::cout << "a - add new item to the list" << std::endl; 
-        break; 
-      
-      case 'c': 
-        std::cout << "c - complete/check off item in the list" << std::endl;
-        break; 
-
-      case 'd': 
-        std::cout << "d - delete item in the list" << std::endl; 
+      case 'a':
+        std::cout << "a - add new item to the list" << std::endl;
         break;
 
-      case 'h': 
-        std::cout << "h - help (print the keybindings)" << std::endl; 
-        break; 
+      case 'c':
+        std::cout << "c - complete/check off item in the list" << std::endl;
+        break;
 
-      case 'q': 
-        std::cout << "q - quit TODO CLI" << std::endl; 
-        break; 
+      case 'd':
+        std::cout << "d - delete item in the list" << std::endl;
+        break;
+
+      case 'h':
+        std::cout << "h - help (print the keybindings)" << std::endl;
+        break;
+
+      case 'q':
+        std::cout << "q - quit TODO CLI" << std::endl;
+        return 0;
 
       default:
         std::cout << "Try again. You can type 'h' for help" << std::endl;
         break;
     }
 
-    std::cin.clear(); 
-    std::cin.ignore(INT_MAX, '\n'); 
+    std::cin.clear();
+    std::cin.ignore(INT_MAX, '\n');
   }
 
   return 0;

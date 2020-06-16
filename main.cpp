@@ -21,6 +21,7 @@ int main() {
   std::cout << "Your command line to-do list :)" << std::endl;
 
   while (true) {
+    std::cout << ">> "; 
     std::string input;
     std::getline(std::cin, input);
 

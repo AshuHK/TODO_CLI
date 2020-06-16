@@ -31,7 +31,7 @@ void list_items(bool show_nums) {
 }
 
 /**
- * Appends a new item to the end of the to-do list file 
+ * Appends a new item to the end of the to-do list file
  * @param None
  *
  * @return - None
@@ -47,10 +47,10 @@ void add_item() {
 
     file << "- [ ] " << new_item << "\n";
   } else {
-    std::cout << "File Not Found" << std::endl; 
+    std::cout << "File Not Found" << std::endl;
   }
 
-  file.close(); 
+  file.close();
 }
 
 int main() {

@@ -2,9 +2,14 @@
 #include <iostream>
 #include <string>
 
+void list_items(std::fstream & file, bool show_nums){
+
+}
+
 int main() {
   std::cout << "Welcome to TODO CLI" << std::endl;
   std::cout << "Your command line to-do list :)" << std::endl;
+  std::fstream file = open("todo.md"); 
 
   while (true) {
     std::cout << ">> ";

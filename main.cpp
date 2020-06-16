@@ -3,18 +3,17 @@
 #include <string>
 
 void list_items(std::fstream& file, bool show_nums) {
-  
-  int num = 1; 
+  int num = 1;
   if (file.is_open()) {
     std::string line;
 
     while (std::getline(file, line)) {
       if (show_nums) {
-        std::cout << num << " " << line << std::endl; 
+        std::cout << num << " " << line << std::endl;
       } else {
         std::cout << line << std::endl;
       }
-      num++; 
+      num++;
     }
   } else {
     std::cout << "File Not Found" << std::endl;

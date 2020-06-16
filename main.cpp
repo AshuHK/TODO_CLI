@@ -62,7 +62,7 @@ int main() {
       }
 
     } else {
-      std::cout << "Try again. You typed in nothong" << std::endl;
+      std::cout << "Try again. You can type 'h' for help" << std::endl;
     }
 
     input.clear();

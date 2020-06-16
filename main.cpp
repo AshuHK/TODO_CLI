@@ -53,6 +53,12 @@ void add_item() {
   file.close();
 }
 
+/**
+ * Prints all of the keybindings to the console
+ * @param None
+ *
+ * @return - None
+ */
 void cout_help() {
   std::string keybindings = R"(
 Keybindings:

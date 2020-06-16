@@ -25,6 +25,8 @@ int main() {
     std::getline(std::cin, input);
 
     if (!input.empty()) {
+
+      // switch is based on the first char in the input
       switch (input[0]) {
         case 'L':
         case 'l':

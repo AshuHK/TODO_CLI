@@ -58,7 +58,7 @@ void add_item() {
 }
 
 /**
- * Updates the file for completing and item in the to-do list
+ * Updates the file for checking off an item in the to-do list
  * @param choice - a constant reference to an int of the user's choice of
  *                 which item should be checked off on the list
  *
@@ -130,35 +130,44 @@ void check_item(const int& item_count) {
   ci_update_file(choice);
 }
 
+/**
+ * Updates the file for deleting a file in the to-do list file
+ * @param choice - a constant reference to an int for the user's choice
+ *
+ * @return - None
+ */
 void delete_update_file(const int& choice) {
   std::ifstream infile("todo.md");
 
-  if (infile.is_open()){
+  if (infile.is_open()) {
+    std::string line;
+    std::vector<std::string> lines;
 
-    std::string line; 
-    std::vector<std::string> lines; 
-
-    while(std::getline(infile, line)) {
-      lines.push_back(line); 
+    while (std::getline(infile, line)) {
+      lines.push_back(line);
     }
-    infile.close(); 
+    infile.close();
 
-    lines.erase(lines.begin() + (choice - 1)); 
+    lines.erase(lines.begin() + (choice - 1));
 
-    std::ofstream outfile("todo.md"); 
+    std::ofstream outfile("todo.md");
     for (const std::string& item : lines) {
-      outfile << item << "\n"; 
+      outfile << item << "\n";
     }
-    outfile.close(); 
-
+    outfile.close();
 
   } else {
-    std::cout << "File not found." << std::endl; 
+    std::cout << "File not found." << std::endl;
   }
 }
 
 /**
- * 
+ * Takes the input from the user on which item in the to-do list file to
+ * delete
+ * @param item_count - a constant reference to an int for the number of items
+ *                     in the to-do list file
+ *
+ * @return - None
  */
 void delete_item(const int& item_count) {
   if (item_count == 0) {
@@ -186,7 +195,7 @@ void delete_item(const int& item_count) {
     }
   }
 
-  delete_update_file(choice); 
+  delete_update_file(choice);
 }
 
 /**
@@ -250,8 +259,8 @@ int main() {
 
         case 'D':
         case 'd':
-          item_count = list_items(true); 
-          delete_item(item_count); 
+          item_count = list_items(true);
+          delete_item(item_count);
           break;
 
         case 'H':

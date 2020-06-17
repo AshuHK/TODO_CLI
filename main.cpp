@@ -68,7 +68,6 @@ void ci_update_file(const int& choice) {
   std::ifstream infile("todo.md");
   if (infile.is_open()) {
     std::string line;
-
     std::vector<std::string> lines;
 
     while (std::getline(infile, line)) {
@@ -129,6 +128,65 @@ void check_item(const int& item_count) {
   }
 
   ci_update_file(choice);
+}
+
+void delete_update_file(const int& choice) {
+  std::ifstream infile("todo.md");
+
+  if (infile.is_open()){
+
+    std::string line; 
+    std::vector<std::string> lines; 
+
+    while(std::getline(infile, line)) {
+      lines.push_back(line); 
+    }
+    infile.close(); 
+
+    lines.erase(lines.begin() + (choice - 1)); 
+
+    std::ofstream outfile("todo.md"); 
+    for (const std::string& item : lines) {
+      outfile << item << "\n"; 
+    }
+    outfile.close(); 
+
+
+  } else {
+    std::cout << "File not found." << std::endl; 
+  }
+}
+
+/**
+ * 
+ */
+void delete_item(const int& item_count) {
+  if (item_count == 0) {
+    std::cout << "Your to-do list is empty." << std::endl;
+    return;
+  }
+
+  int choice;
+  while (true) {
+    std::cout << "Select item: ";
+    std::string input;
+    std::getline(std::cin, input);
+
+    try {
+      choice = std::stoi(input);
+    } catch (std::exception& e) {
+      choice = -1;
+    }
+
+    if ((1 <= choice) && (choice <= item_count)) {
+      break;
+    } else {
+      std::cout << "Invalid choice. Try again." << std::endl;
+      return;
+    }
+  }
+
+  delete_update_file(choice); 
 }
 
 /**
@@ -192,7 +250,8 @@ int main() {
 
         case 'D':
         case 'd':
-          std::cout << "d - delete item in the list" << std::endl;
+          item_count = list_items(true); 
+          delete_item(item_count); 
           break;
 
         case 'H':

@@ -57,6 +57,30 @@ void add_item() {
   file.close();
 }
 
+void ci_update_file(const int & choice){
+  std::ifstream infile("todo.md");
+  if (infile.is_open()) {
+    std::string line;
+
+    std::vector<std::string> lines;
+
+    while (std::getline(infile, line)) {
+      lines.push_back(line);
+    }
+    infile.close();
+    lines[choice - 1][3] = 'x';
+
+    std::ofstream outfile("todo.md");
+    for (const std::string& item : lines) {
+      outfile << item << "\n";
+    }
+    outfile.close();
+
+  } else {
+    std::cout << "File not found." << std::endl;
+  }
+}
+
 /**
  */
 void complete_item(const int& item_count) {
@@ -85,27 +109,8 @@ void complete_item(const int& item_count) {
     }
   }
 
-  std::ifstream infile("todo.md");
-  if (infile.is_open()) {
-    std::string line;
+  ci_update_file(choice); 
 
-    std::vector<std::string> lines;
-
-    while (std::getline(infile, line)) {
-      lines.push_back(line);
-    }
-    infile.close();
-    lines[choice - 1][3] = 'x';
-
-    std::ofstream outfile("todo.md");
-    for (const std::string& item : lines) {
-      outfile << item << "\n";
-    }
-    outfile.close();
-
-  } else {
-    std::cout << "File not found." << std::endl;
-  }
 }
 
 /**

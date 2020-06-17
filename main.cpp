@@ -208,7 +208,7 @@ void cout_help() {
   std::string keybindings = R"(
 Keybindings:
   - Main Controls
-    - l - list items to do
+    - l - show your to do list
     - a - append new item to the list
     - c - toggle checkmark on an item in the list
     - d - delete item in the list

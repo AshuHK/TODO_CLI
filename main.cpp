@@ -102,7 +102,7 @@ void ci_update_file(const int& choice) {
  *
  * @return - None
  */
-void complete_item(const int& item_count) {
+void check_item(const int& item_count) {
   if (item_count == 0) {
     std::cout << "Your to-do list is empty." << std::endl;
     return;
@@ -110,7 +110,7 @@ void complete_item(const int& item_count) {
 
   int choice;
   while (true) {
-    std::cout << "Complete task: ";
+    std::cout << "Select item: ";
     std::string input;
     std::getline(std::cin, input);
 
@@ -187,7 +187,7 @@ int main() {
         case 'C':
         case 'c':
           item_count = list_items(true);
-          complete_item(item_count);
+          check_item(item_count);
           break;
 
         case 'D':

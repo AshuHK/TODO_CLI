@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <vector>
 
 /**
  * Prints out all of the items in the to-do list file and returns the number
@@ -26,7 +27,7 @@ int list_items(bool show_nums) {
       }
     }
   } else {
-    std::cout << "File Not Found" << std::endl;
+    std::cout << "File not Found" << std::endl;
   }
 
   file.close();
@@ -50,7 +51,7 @@ void add_item() {
 
     file << "- [ ] " << new_item << "\n";
   } else {
-    std::cout << "File Not Found" << std::endl;
+    std::cout << "File not Found" << std::endl;
   }
 
   file.close();
@@ -64,12 +65,12 @@ void complete_item(const int& item_count) {
     return;
   }
 
+  int choice;
   while (true) {
     std::cout << "Complete task: ";
     std::string input;
     std::getline(std::cin, input);
 
-    int choice;
     try {
       choice = std::stoi(input);
     } catch (std::exception& e) {
@@ -84,7 +85,27 @@ void complete_item(const int& item_count) {
     }
   }
 
-  std::cout << "you made it to the end" << std::endl;
+  std::ifstream infile("todo.md");
+  if (infile.is_open()) {
+    std::string line;
+
+    std::vector<std::string> lines;
+
+    while (std::getline(infile, line)) {
+      lines.push_back(line);
+    }
+    infile.close();
+    lines[choice - 1][3] = 'x';
+
+    std::ofstream outfile("todo.md");
+    for (const std::string& item : lines) {
+      outfile << item << "\n";
+    }
+    outfile.close();
+
+  } else {
+    std::cout << "File not found." << std::endl;
+  }
 }
 
 /**

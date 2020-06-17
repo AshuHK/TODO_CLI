@@ -1,3 +1,0 @@
-- [ ] work on complete/check of item in the list
-- [ ] work on delete item in the list
-- [ ] maybe add a renaming feature but idk

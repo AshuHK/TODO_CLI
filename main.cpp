@@ -8,26 +8,27 @@
  *
  * @return - None
  */
-void list_items(bool show_nums) {
+int list_items(bool show_nums) {
   std::ifstream file("todo.md");
-  int num = 1;
+  int num = 0;
 
   if (file.is_open()) {
     std::string line;
 
     while (std::getline(file, line)) {
+      num++;
       if (show_nums) {
         std::cout << num << " " << line << std::endl;
       } else {
         std::cout << line << std::endl;
       }
-      num++;
     }
   } else {
     std::cout << "File Not Found" << std::endl;
   }
 
   file.close();
+  return num;
 }
 
 /**
@@ -52,6 +53,10 @@ void add_item() {
 
   file.close();
 }
+
+/**
+ */
+void complete_item(const int& item_count) {}
 
 /**
  * Prints all of the keybindings to the console
@@ -92,6 +97,7 @@ int main() {
     std::string input;
     std::getline(std::cin, input);
 
+    int item_count; 
     if (!input.empty()) {
       // switch is based on the first char in the input
       switch (input[0]) {
@@ -107,7 +113,10 @@ int main() {
 
         case 'C':
         case 'c':
-          std::cout << "c - complete/check off item in the list" << std::endl;
+          // std::cout << "c - complete/check off item in the list" <<
+          // std::endl;
+          item_count = list_items(true);
+          complete_item(item_count);
           break;
 
         case 'D':

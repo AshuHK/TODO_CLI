@@ -57,6 +57,13 @@ void add_item() {
   file.close();
 }
 
+/**
+ * Updates the file for completing and item in the to-do list
+ * @param choice - a constant reference to an int of the user's choice of
+ *                 which item should be checked off on the list
+ *
+ * @return - None
+ */
 void ci_update_file(const int& choice) {
   std::ifstream infile("todo.md");
   if (infile.is_open()) {
@@ -68,7 +75,12 @@ void ci_update_file(const int& choice) {
       lines.push_back(line);
     }
     infile.close();
-    lines[choice - 1][3] = 'x';
+
+    if (lines[choice - 1][3] == ' ') {
+      lines[choice - 1][3] = 'x';
+    } else if (lines[choice - 1][3] == 'x') {
+      lines[choice - 1][3] = ' '; 
+    }
 
     std::ofstream outfile("todo.md");
     for (const std::string& item : lines) {
@@ -82,6 +94,13 @@ void ci_update_file(const int& choice) {
 }
 
 /**
+ * Takes input for which item in the list should be checked off.
+ * Any file manipulation see ci_update_file
+ *
+ * @param item_count - a constant reference to an int for the number of items
+ *                     in the to-do list file
+ *
+ * @return - None
  */
 void complete_item(const int& item_count) {
   if (item_count == 0) {

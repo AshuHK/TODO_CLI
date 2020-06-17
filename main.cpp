@@ -57,7 +57,7 @@ void add_item() {
   file.close();
 }
 
-void ci_update_file(const int & choice){
+void ci_update_file(const int& choice) {
   std::ifstream infile("todo.md");
   if (infile.is_open()) {
     std::string line;
@@ -109,8 +109,7 @@ void complete_item(const int& item_count) {
     }
   }
 
-  ci_update_file(choice); 
-
+  ci_update_file(choice);
 }
 
 /**

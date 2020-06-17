@@ -11,3 +11,5 @@ Keybindings:
   - Misc.
     - `h` - help (print the keybindings)
     - `q` - quit TODO CLI
+
+Note: The todo list is stored in `todo.md`.

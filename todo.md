@@ -1,0 +1,3 @@
+- [ ] my first task of the day
+- [ ] my second task
+- [x] this task is done

@@ -79,7 +79,7 @@ void ci_update_file(const int& choice) {
     if (lines[choice - 1][3] == ' ') {
       lines[choice - 1][3] = 'x';
     } else if (lines[choice - 1][3] == 'x') {
-      lines[choice - 1][3] = ' '; 
+      lines[choice - 1][3] = ' ';
     }
 
     std::ofstream outfile("todo.md");

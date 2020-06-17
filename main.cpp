@@ -1,12 +1,14 @@
+#include <exception>
 #include <fstream>
 #include <iostream>
 #include <string>
 
 /**
- * Prints out all of the items in the to-do list file
+ * Prints out all of the items in the to-do list file and returns the number
+ * of items in the to-do list
  * @param show_nums - a boolean on to show number indicators for the output
  *
- * @return - None
+ * @return - the number of items in the to-do list file
  */
 int list_items(bool show_nums) {
   std::ifstream file("todo.md");
@@ -56,7 +58,34 @@ void add_item() {
 
 /**
  */
-void complete_item(const int& item_count) {}
+void complete_item(const int& item_count) {
+  if (item_count == 0) {
+    std::cout << "Your to-do list is empty." << std::endl;
+    return;
+  }
+
+  while (true) {
+    std::cout << "Complete task: ";
+    std::string input;
+    std::getline(std::cin, input);
+
+    int choice;
+    try {
+      choice = std::stoi(input);
+    } catch (std::exception& e) {
+      choice = -1;
+    }
+
+    if ((1 <= choice) && (choice <= item_count)) {
+      break;
+    } else {
+      std::cout << "Invalid choice. Try again." << std::endl;
+      return;
+    }
+  }
+
+  std::cout << "you made it to the end" << std::endl;
+}
 
 /**
  * Prints all of the keybindings to the console
@@ -82,11 +111,11 @@ Keybindings:
 
 int main() {
   std::string intro = R"(
- _________  ________  ________  ________          ________  ___       ___     
-|\___   ___\\   __  \|\   ___ \|\   __  \        |\   ____\|\  \     |\  \    
-\|___ \  \_\ \  \|\  \ \  \_|\ \ \  \|\  \       \ \  \___|\ \  \    \ \  \   
-     \ \  \ \ \  \\\  \ \  \ \\ \ \  \\\  \       \ \  \    \ \  \    \ \  \  
-      \ \  \ \ \  \\\  \ \  \_\\ \ \  \\\  \       \ \  \____\ \  \____\ \  \ 
+ _________  ________  ________  ________          ________  ___       ___
+|\___   ___\\   __  \|\   ___ \|\   __  \        |\   ____\|\  \     |\  \
+\|___ \  \_\ \  \|\  \ \  \_|\ \ \  \|\  \       \ \  \___|\ \  \    \ \  \
+     \ \  \ \ \  \\\  \ \  \ \\ \ \  \\\  \       \ \  \    \ \  \    \ \  \
+      \ \  \ \ \  \\\  \ \  \_\\ \ \  \\\  \       \ \  \____\ \  \____\ \  \
        \ \__\ \ \_______\ \_______\ \_______\       \ \_______\ \_______\ \__\
         \|__|  \|_______|\|_______|\|_______|        \|_______|\|_______|\|__|
   )";
@@ -97,7 +126,7 @@ int main() {
     std::string input;
     std::getline(std::cin, input);
 
-    int item_count; 
+    int item_count;
     if (!input.empty()) {
       // switch is based on the first char in the input
       switch (input[0]) {
@@ -113,8 +142,6 @@ int main() {
 
         case 'C':
         case 'c':
-          // std::cout << "c - complete/check off item in the list" <<
-          // std::endl;
           item_count = list_items(true);
           complete_item(item_count);
           break;

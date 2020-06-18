@@ -198,6 +198,39 @@ void delete_item(const int& item_count) {
   delete_update_file(choice);
 }
 
+void rename_update_file(const int& choice) {
+  
+}
+
+void rename_item(const int& item_count) {
+   if (item_count == 0) {
+    std::cout << "Your to-do list is empty." << std::endl;
+    return;
+  }
+
+  int choice;
+  while (true) {
+    std::cout << "Select item: ";
+    std::string input;
+    std::getline(std::cin, input);
+
+    try {
+      choice = std::stoi(input);
+    } catch (std::exception& e) {
+      choice = -1;
+    }
+
+    if ((1 <= choice) && (choice <= item_count)) {
+      break;
+    } else {
+      std::cout << "Invalid choice. Try again." << std::endl;
+      return;
+    }
+  } 
+  
+  rename_update_file(choice); 
+}
+
 /**
  * Prints all of the keybindings to the console
  * @param None
@@ -267,6 +300,11 @@ int main() {
         case 'h':
           cout_help();
           break;
+
+        case 'R':
+        case 'r': 
+          item_count = list_items(true); 
+          rename_item(item_count); 
 
         case 'Q':
         case 'q':

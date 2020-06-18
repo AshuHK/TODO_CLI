@@ -240,7 +240,7 @@ void rename_update_file(const int& choice) {
     }
     infile.close();
 
-    std::string part1 = "- [ ] ";
+    std::string part1 = lines[choice - 1].substr(0, 6); 
     std::string part2;
     std::cout << "Rename item to: ";
     std::getline(std::cin, part2);

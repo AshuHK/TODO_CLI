@@ -305,15 +305,15 @@ void cout_help() {
   std::string keybindings = R"(
 Keybindings:
   - Main Controls
-    - l - show your to do list
-    - a - append new item to the list
-    - c - toggle checkmark on an item in the list
-    - d - delete item in the list
-    - r - rename item in the list
+    - l/L - show your to do list
+    - a/A - append new item to the list
+    - c/C - toggle checkmark on an item in the list
+    - d/D - delete item in the list
+    - r/R - rename item in the list
 
   - Misc.
-    - h - help
-    - q - quit TODO CLI
+    - h/R - help
+    - q/Q - quit TODO CLI
   )";
   std::cout << keybindings << std::endl;
 }

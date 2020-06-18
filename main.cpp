@@ -4,8 +4,14 @@
 #include <string>
 #include <vector>
 
+/**
+ * Clears the screen and prints the splash text
+ * @param None 
+ * 
+ * @return - None
+ */
 void clear_screen() {
-  std::cout << std::string(100, '\n'); 
+  std::cout << std::string(100, '\n');
   std::string intro = R"(
  _________  ________  ________  ________          ________  ___       ___
 |\___   ___\\   __  \|\   ___ \|\   __  \        |\   ____\|\  \     |\  \
@@ -15,7 +21,7 @@ void clear_screen() {
        \ \__\ \ \_______\ \_______\ \_______\       \ \_______\ \_______\ \__\
         \|__|  \|_______|\|_______|\|_______|        \|_______|\|_______|\|__|
   )";
-  std::cout << intro << std::endl;  
+  std::cout << intro << std::endl;
 }
 
 /**
@@ -26,8 +32,7 @@ void clear_screen() {
  * @return - the number of items in the to-do list file
  */
 int list_items(bool show_nums) {
-
-  clear_screen(); 
+  clear_screen();
 
   std::ifstream file(".todo.user");
   int num = 0;
@@ -300,7 +305,7 @@ void rename_item(const int& item_count) {
  * @return - None
  */
 void cout_help() {
-  clear_screen(); 
+  clear_screen();
 
   std::string keybindings = R"(
 Keybindings:
@@ -319,7 +324,7 @@ Keybindings:
 }
 
 int main() {
-  list_items(false); 
+  list_items(false);
 
   while (true) {
     std::cout << ">> ";
@@ -331,7 +336,7 @@ int main() {
       // switch is based on the first char in the input
       switch (input[0]) {
         case 'L':
-          list_items(true); 
+          list_items(true);
           break;
         case 'l':
           list_items(false);

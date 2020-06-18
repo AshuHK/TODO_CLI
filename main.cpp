@@ -12,7 +12,7 @@
  * @return - the number of items in the to-do list file
  */
 int list_items(bool show_nums) {
-  std::ifstream file("todo.md");
+  std::ifstream file(".todo.user");
   int num = 0;
 
   if (file.is_open()) {
@@ -41,7 +41,7 @@ int list_items(bool show_nums) {
  * @return - None
  */
 void add_item() {
-  std::ofstream file("todo.md", std::ios::app);
+  std::ofstream file(".todo.user", std::ios::app);
 
   if (file.is_open()) {
     std::cout << "New item: ";
@@ -65,7 +65,7 @@ void add_item() {
  * @return - None
  */
 void ci_update_file(const int& choice) {
-  std::ifstream infile("todo.md");
+  std::ifstream infile(".todo.user");
   if (infile.is_open()) {
     std::string line;
     std::vector<std::string> lines;
@@ -81,7 +81,7 @@ void ci_update_file(const int& choice) {
       lines[choice - 1][3] = ' ';
     }
 
-    std::ofstream outfile("todo.md");
+    std::ofstream outfile(".todo.user");
     for (const std::string& item : lines) {
       outfile << item << "\n";
     }
@@ -137,7 +137,7 @@ void check_item(const int& item_count) {
  * @return - None
  */
 void delete_update_file(const int& choice) {
-  std::ifstream infile("todo.md");
+  std::ifstream infile(".todo.user");
 
   if (infile.is_open()) {
     std::string line;
@@ -150,7 +150,7 @@ void delete_update_file(const int& choice) {
 
     lines.erase(lines.begin() + (choice - 1));
 
-    std::ofstream outfile("todo.md");
+    std::ofstream outfile(".todo.user");
     for (const std::string& item : lines) {
       outfile << item << "\n";
     }
@@ -199,7 +199,7 @@ void delete_item(const int& item_count) {
 }
 
 void rename_update_file(const int& choice) {
-  std::ifstream infile("todo.md"); 
+  std::ifstream infile(".todo.user"); 
 
   if(infile.is_open()){
     std::string line; 
@@ -219,7 +219,7 @@ void rename_update_file(const int& choice) {
 
     lines[choice - 1] = renamed; 
 
-    std::ofstream outfile("todo.md"); 
+    std::ofstream outfile(".todo.user"); 
     for (const std::string& item : lines) {
       outfile << item << "\n"; 
     }

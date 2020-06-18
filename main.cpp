@@ -199,7 +199,35 @@ void delete_item(const int& item_count) {
 }
 
 void rename_update_file(const int& choice) {
-  
+  std::ifstream infile("todo.md"); 
+
+  if(infile.is_open()){
+    std::string line; 
+    std::vector<std::string> lines; 
+
+    while(std::getline(infile, line)) {
+      lines.push_back(line); 
+    }
+    infile.close(); 
+
+    std::string part1 = "- [ ] "; 
+    std::string part2; 
+    std::cout << "New item: "; 
+    std::getline(std::cin, part2); 
+
+    std::string renamed = part1 + part2; 
+
+    lines[choice - 1] = renamed; 
+
+    std::ofstream outfile("todo.md"); 
+    for (const std::string& item : lines) {
+      outfile << item << "\n"; 
+    }
+    outfile.close(); 
+
+  } else {
+    std::cout << "File not found" << std::endl; 
+  }
 }
 
 void rename_item(const int& item_count) {
@@ -305,6 +333,7 @@ int main() {
         case 'r': 
           item_count = list_items(true); 
           rename_item(item_count); 
+          break; 
 
         case 'Q':
         case 'q':

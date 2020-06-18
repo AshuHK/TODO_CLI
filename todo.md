@@ -1,4 +1,4 @@
-- [ ] Try something new 
-- [ ] meditate 
-- [x] be happy 
-- [ ] Add a renaming feature for TODO CLI with R/r as the keybinding 
+- [ ] Try something new
+- [x] be happy
+- [ ] renaming feature is done
+- [ ] i fixed it

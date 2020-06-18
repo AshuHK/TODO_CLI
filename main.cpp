@@ -4,6 +4,20 @@
 #include <string>
 #include <vector>
 
+void clear_screen() {
+  std::cout << std::string(100, '\n'); 
+  std::string intro = R"(
+ _________  ________  ________  ________          ________  ___       ___
+|\___   ___\\   __  \|\   ___ \|\   __  \        |\   ____\|\  \     |\  \
+\|___ \  \_\ \  \|\  \ \  \_|\ \ \  \|\  \       \ \  \___|\ \  \    \ \  \
+     \ \  \ \ \  \\\  \ \  \ \\ \ \  \\\  \       \ \  \    \ \  \    \ \  \
+      \ \  \ \ \  \\\  \ \  \_\\ \ \  \\\  \       \ \  \____\ \  \____\ \  \
+       \ \__\ \ \_______\ \_______\ \_______\       \ \_______\ \_______\ \__\
+        \|__|  \|_______|\|_______|\|_______|        \|_______|\|_______|\|__|
+  )";
+  std::cout << intro << std::endl;  
+}
+
 /**
  * Prints out all of the items in the to-do list file and returns the number
  * of items in the to-do list
@@ -12,6 +26,9 @@
  * @return - the number of items in the to-do list file
  */
 int list_items(bool show_nums) {
+
+  clear_screen(); 
+
   std::ifstream file(".todo.user");
   int num = 0;
 
@@ -283,6 +300,8 @@ void rename_item(const int& item_count) {
  * @return - None
  */
 void cout_help() {
+  clear_screen(); 
+
   std::string keybindings = R"(
 Keybindings:
   - Main Controls
@@ -300,16 +319,7 @@ Keybindings:
 }
 
 int main() {
-  std::string intro = R"(
- _________  ________  ________  ________          ________  ___       ___
-|\___   ___\\   __  \|\   ___ \|\   __  \        |\   ____\|\  \     |\  \
-\|___ \  \_\ \  \|\  \ \  \_|\ \ \  \|\  \       \ \  \___|\ \  \    \ \  \
-     \ \  \ \ \  \\\  \ \  \ \\ \ \  \\\  \       \ \  \    \ \  \    \ \  \
-      \ \  \ \ \  \\\  \ \  \_\\ \ \  \\\  \       \ \  \____\ \  \____\ \  \
-       \ \__\ \ \_______\ \_______\ \_______\       \ \_______\ \_______\ \__\
-        \|__|  \|_______|\|_______|\|_______|        \|_______|\|_______|\|__|
-  )";
-  std::cout << intro << std::endl;
+  list_items(false); 
 
   while (true) {
     std::cout << ">> ";
@@ -321,6 +331,8 @@ int main() {
       // switch is based on the first char in the input
       switch (input[0]) {
         case 'L':
+          list_items(true); 
+          break;
         case 'l':
           list_items(false);
           break;

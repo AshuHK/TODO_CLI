@@ -94,7 +94,7 @@ void ci_update_file(const int& choice) {
 
 /**
  * Takes input for which item in the list should be checked off.
- * Any file manipulation see ci_update_file
+ * For any file manipulation, see ci_update_file
  *
  * @param item_count - a constant reference to an int for the number of items
  *                     in the to-do list file
@@ -163,7 +163,8 @@ void delete_update_file(const int& choice) {
 
 /**
  * Takes the input from the user on which item in the to-do list file to
- * delete
+ * delete.
+ * For any file manipulation, see delete_update_file
  * @param item_count - a constant reference to an int for the number of items
  *                     in the to-do list file
  *
@@ -198,6 +199,13 @@ void delete_item(const int& item_count) {
   delete_update_file(choice);
 }
 
+/**
+ * Take input on what the new name for the item should be and updates the
+ * to-do list file
+ * @param choice - a constant reference to an int for the user's choice
+ *
+ * @return None
+ */
 void rename_update_file(const int& choice) {
   std::ifstream infile(".todo.user");
 
@@ -230,6 +238,15 @@ void rename_update_file(const int& choice) {
   }
 }
 
+/**
+ * Take input for which item in the list should be renamed.
+ * For any file manipulation, see rename_update_file
+ *
+ * @param item_count - a constant reference to an int for the number of items
+ *                     in the to-do list file
+ *
+ * @return None
+ */
 void rename_item(const int& item_count) {
   if (item_count == 0) {
     std::cout << "Your to-do list is empty." << std::endl;

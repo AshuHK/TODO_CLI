@@ -44,7 +44,7 @@ void add_item() {
   std::ofstream file("todo.md", std::ios::app);
 
   if (file.is_open()) {
-    std::cout << "New task: ";
+    std::cout << "New item: ";
 
     std::string new_item;
     std::getline(std::cin, new_item);
@@ -109,7 +109,7 @@ void check_item(const int& item_count) {
 
   int choice;
   while (true) {
-    std::cout << "Select item: ";
+    std::cout << "Check item: ";
     std::string input;
     std::getline(std::cin, input);
 
@@ -177,7 +177,7 @@ void delete_item(const int& item_count) {
 
   int choice;
   while (true) {
-    std::cout << "Select item: ";
+    std::cout << "Delete item: ";
     std::string input;
     std::getline(std::cin, input);
 
@@ -212,7 +212,7 @@ void rename_update_file(const int& choice) {
 
     std::string part1 = "- [ ] "; 
     std::string part2; 
-    std::cout << "New item: "; 
+    std::cout << "Rename item to: "; 
     std::getline(std::cin, part2); 
 
     std::string renamed = part1 + part2; 
@@ -238,7 +238,7 @@ void rename_item(const int& item_count) {
 
   int choice;
   while (true) {
-    std::cout << "Select item: ";
+    std::cout << "Rename item: ";
     std::string input;
     std::getline(std::cin, input);
 

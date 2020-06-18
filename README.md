@@ -10,7 +10,7 @@ Keybindings:
     - `r` or `R` - rename item in the list
 
   - Misc.
-    - `h`/`H` - help
-    - `q`/`Q` - quit TODO CLI
+    - `h` or `H` - help
+    - `q` or `Q` - quit TODO CLI
 
 Note: The todo list is stored in `.todo.user`.

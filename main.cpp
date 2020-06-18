@@ -199,39 +199,39 @@ void delete_item(const int& item_count) {
 }
 
 void rename_update_file(const int& choice) {
-  std::ifstream infile(".todo.user"); 
+  std::ifstream infile(".todo.user");
 
-  if(infile.is_open()){
-    std::string line; 
-    std::vector<std::string> lines; 
+  if (infile.is_open()) {
+    std::string line;
+    std::vector<std::string> lines;
 
-    while(std::getline(infile, line)) {
-      lines.push_back(line); 
+    while (std::getline(infile, line)) {
+      lines.push_back(line);
     }
-    infile.close(); 
+    infile.close();
 
-    std::string part1 = "- [ ] "; 
-    std::string part2; 
-    std::cout << "Rename item to: "; 
-    std::getline(std::cin, part2); 
+    std::string part1 = "- [ ] ";
+    std::string part2;
+    std::cout << "Rename item to: ";
+    std::getline(std::cin, part2);
 
-    std::string renamed = part1 + part2; 
+    std::string renamed = part1 + part2;
 
-    lines[choice - 1] = renamed; 
+    lines[choice - 1] = renamed;
 
-    std::ofstream outfile(".todo.user"); 
+    std::ofstream outfile(".todo.user");
     for (const std::string& item : lines) {
-      outfile << item << "\n"; 
+      outfile << item << "\n";
     }
-    outfile.close(); 
+    outfile.close();
 
   } else {
-    std::cout << "File not found" << std::endl; 
+    std::cout << "File not found" << std::endl;
   }
 }
 
 void rename_item(const int& item_count) {
-   if (item_count == 0) {
+  if (item_count == 0) {
     std::cout << "Your to-do list is empty." << std::endl;
     return;
   }
@@ -254,9 +254,9 @@ void rename_item(const int& item_count) {
       std::cout << "Invalid choice. Try again." << std::endl;
       return;
     }
-  } 
-  
-  rename_update_file(choice); 
+  }
+
+  rename_update_file(choice);
 }
 
 /**
@@ -324,16 +324,16 @@ int main() {
           delete_item(item_count);
           break;
 
+        case 'R':
+        case 'r':
+          item_count = list_items(true);
+          rename_item(item_count);
+          break;
+
         case 'H':
         case 'h':
           cout_help();
           break;
-
-        case 'R':
-        case 'r': 
-          item_count = list_items(true); 
-          rename_item(item_count); 
-          break; 
 
         case 'Q':
         case 'q':

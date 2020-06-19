@@ -1,7 +1,10 @@
 # TODO_CLI
 A simple command line to-do list manager
 
-Keybindings:
+## Setup 
+
+
+## Keybindings
   - Main Controls
     - `l` or `L` - show your to do list
     - `a` or `A` - append new item to the list

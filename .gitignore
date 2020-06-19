@@ -30,4 +30,9 @@
 *.exe
 *.out
 *.app
+
+# main executable
 todo_cli
+
+# to-do file
+.todo.user

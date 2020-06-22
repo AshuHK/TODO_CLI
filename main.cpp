@@ -73,7 +73,7 @@ void add_item() {
 
     file << "- [ ] " << new_item << "\n";
   } else {
-    std::cout << "File not Found" << std::endl;
+    std::cout << "File not Found." << std::endl;
   }
 
   file.close();
@@ -256,7 +256,7 @@ void rename_update_file(const int& choice) {
     outfile.close();
 
   } else {
-    std::cout << "File not found" << std::endl;
+    std::cout << "File not found." << std::endl;
   }
 }
 
@@ -375,12 +375,12 @@ int main() {
           return 0;
 
         default:
-          std::cout << "Try again. You can type 'h' for help" << std::endl;
+          std::cout << "Try again. You can type 'h' for help." << std::endl;
           break;
       }
 
     } else {
-      std::cout << "Try again. You can type 'h' for help" << std::endl;
+      std::cout << "Try again. You can type 'h' for help." << std::endl;
     }
 
     input.clear();
